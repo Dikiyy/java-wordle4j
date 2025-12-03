@@ -35,7 +35,7 @@ public class WordleDictionary {
     }
 
     public boolean contains(String word) {
-        return words.contains(word);
+        return words.contains(normalize(word));
     }
 
     public String getRandomWord() {
