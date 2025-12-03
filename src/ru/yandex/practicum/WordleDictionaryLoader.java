@@ -12,12 +12,12 @@ public class WordleDictionaryLoader {
         this.pr = pr;
     }
 
-    public WordleDictionary load(String Load) throws DictionaryLoadException{
+    public WordleDictionary load(String Load) throws DictionaryLoadException {
         ArrayList<String> words = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(new FileInputStream(Load), StandardCharsets.UTF_8))) {
             String line;
-            while((line = br.readLine())!=null){
+            while ((line = br.readLine()) != null) {
                 words.add(line);
             }
 
