@@ -37,7 +37,7 @@ class WordleGameTest {
     @Test
     void makeMove_wordNotInDictionary_throws() {
         assertThrows(WordNotFoundInDictionary.class,
-                () -> game.makeMove("xxxxx"));
+                () -> game.makeMove("ххххх"));
     }
 
     @Test
