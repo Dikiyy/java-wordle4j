@@ -15,7 +15,7 @@ public class WordleGame {
 
     private final List<String> guesses = new ArrayList<>();
     private final List<String> masks = new ArrayList<>();
-    private final Set<String> usedSuggestions = new HashSet<>();
+    private final Map<String, Integer> usedSuggestions = new LinkedHashMap<>();
 
     public WordleGame(WordleDictionary dictionary, String answer, int maxSteps, PrintWriter log) {
         if (dictionary == null) {
@@ -77,9 +77,11 @@ public class WordleGame {
 
         for (String candidate : dictionary.getWords()) {
 
-            if (guesses.contains(candidate) || usedSuggestions.contains(candidate)) {
+            if (guesses.contains(candidate) || usedSuggestions.containsKey(candidate)) {
                 continue;
             }
+
+            usedSuggestions.put(candidate, usedSuggestions.getOrDefault(candidate, 0) + 1);
 
             boolean ok = true;
 
@@ -91,7 +93,7 @@ public class WordleGame {
             }
 
             if (ok) {
-                usedSuggestions.add(candidate);
+                usedSuggestions.put(candidate, usedSuggestions.getOrDefault(candidate, 0) + 1);
                 if (log != null) {
                     log.println("Suggestion: " + candidate);
                 }
@@ -104,7 +106,7 @@ public class WordleGame {
 
     private boolean fitsMask(String candidate, String guess, String mask) {
         candidate = candidate.toLowerCase().replace('ё', 'е');
-        guess = guess.toLowerCase().replace('ё', 'e');
+        guess = guess.toLowerCase().replace('ё', 'е');
 
         for (int i = 0; i < 5; i++) {
             if (mask.charAt(i) == '+') {
