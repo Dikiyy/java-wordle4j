@@ -24,7 +24,7 @@ class WordleDictionaryTest {
     }
 
     @Test
-    void init_filtersAndNormalizesWords() {
+    void initFiltersAndNormalizesWords() {
         assertTrue(dict.contains("герой"));
         assertTrue(dict.contains("город"));
         assertTrue(dict.contains("столб"));
@@ -34,7 +34,7 @@ class WordleDictionaryTest {
     }
 
     @Test
-    void compare_simpleCase() {
+    void compareSimpleCase() {
         String mask = dict.compare("герой", "гонец");
         assertEquals("+^-^-", mask);
     }

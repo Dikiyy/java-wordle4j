@@ -1,12 +1,13 @@
 package ru.yandex.practicum;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Wordle {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         try (PrintWriter log = new PrintWriter("wordle.log", StandardCharsets.UTF_8)) {
 
             WordleDictionaryLoader loader = new WordleDictionaryLoader(log);
@@ -53,8 +54,6 @@ public class Wordle {
             System.out.println("Произошла ошибка. Смотрите файл wordle.log");
             try (PrintWriter errLog = new PrintWriter("wordle.log", StandardCharsets.UTF_8)) {
                 e.printStackTrace(errLog);
-            } catch (Exception ignored) {
-
             }
         } catch (DictionaryLoadException e) {
             throw new RuntimeException(e);

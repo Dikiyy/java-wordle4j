@@ -27,7 +27,7 @@ class WordleGameTest {
     }
 
     @Test
-    void makeMove_correctGuess_wins() throws Exception {
+    void makeMoveCorrectGuessWins() throws Exception {
         String mask = game.makeMove("герой");
         assertEquals("+++++", mask);
         assertTrue(game.isWin());
@@ -35,13 +35,13 @@ class WordleGameTest {
     }
 
     @Test
-    void makeMove_wordNotInDictionary_throws() {
+    void makeMoveWordNotInDictionaryThrows() {
         assertThrows(WordNotFoundInDictionary.class,
                 () -> game.makeMove("ххххх"));
     }
 
     @Test
-    void suggestWord_respectsMasks() throws Exception {
+    void suggestWordRespectsMasks() throws Exception {
         game.makeMove("гонец");
         String suggestion = game.suggestWord();
         assertNotNull(suggestion);

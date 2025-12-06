@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class WordleDictionaryLoaderTest {
 
     @Test
-    void load_validFile_ok() throws Exception, DictionaryLoadException {
+    void testValidFileLoad() throws Exception, DictionaryLoadException {
         // tmp
         File temp = File.createTempFile("dict-test", ".txt");
         try (FileWriter fw = new FileWriter(temp, StandardCharsets.UTF_8)) {
@@ -29,7 +29,7 @@ class WordleDictionaryLoaderTest {
     }
 
     @Test
-    void load_emptyFile_throws() throws Exception {
+    void testEmptyFileThrows() throws Exception {
         File temp = File.createTempFile("dict-empty", ".txt");
 
         PrintWriter log = new PrintWriter(System.out, true);
